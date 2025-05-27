@@ -66,7 +66,7 @@ def get_learner(learner_url):
     if response and response.ok:
         learner = response.json()
         if learner:
-            learner_descriptor = f"{learner["firstName"]} {learner["lastName"]} ({learner["email"]})"
+            learner_descriptor = f"{learner['firstName']} {learner['lastName']} ({learner['email']})"
 
     learners_cache[learner_url] = learner_descriptor
     return learner_descriptor
@@ -77,7 +77,7 @@ def get_report_cards_for_course(course, page=0, attempt=0):
     global api_base
     global auth
 
-    report_cards_endpoint = f"{api_base}/elearning/v1/reportcards?course_id={urllib.parse.quote_plus(course["courseId"])}&size=500&page={page}"
+    report_cards_endpoint = f"{api_base}/elearning/v1/reportcards?course_id={urllib.parse.quote_plus(course['courseId'])}&size=500&page={page}"
 
     response = requests.get(report_cards_endpoint, auth=auth, headers=headers)
 
@@ -97,7 +97,7 @@ def get_report_cards_for_course(course, page=0, attempt=0):
             print(f"ERROR: exceeded 429 limit ({THROTTLE_LIMIT}). Exiting")
             sys.exit(-1)
     else:
-        print(f"ERROR: unable to fetch report cards page {page} for course {course["courseId"]} - {response.status_code}")
+        print(f"ERROR: unable to fetch report cards page {page} for course {course['courseId']} - {response.status_code}")
         if response and response.json():
             print(f"-- {response.json()}")
 
