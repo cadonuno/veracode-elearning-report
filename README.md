@@ -2,34 +2,34 @@
 
 This repository contains a script to construct a Veracode eLearning users completion status report in Excel format. 
 
-## Prerequisites
+Clone this repository:
 
-### Python
-the script is written in Python and require that you have a Python installed on your PC
+    git clone https://github.com/cadonuno/veracode-elearning-report
 
-You can check that by typing `python --version` in your command prompt or terminal
+Install dependencies:
 
-If you don't get a result of the installed Python version, please install Python on your PC. You can find the installation here: https://www.python.org/downloads/
+    cd veracode-elearning-report
+    pip install -r requirements.txt
 
-### Veracode API Credentials
+(Optional) Save Veracode API credentials in `~/.veracode/credentials`
 
-In order to query for the information for the report the script requires access to the Veracode platform. The script assumes you already have a user account and setup API credentails which are stored in your local computer.
+    [default]
+    veracode_api_key_id = <YOUR_API_KEY_ID>
+    veracode_api_key_secret = <YOUR_API_KEY_SECRET>
 
-If you do not have Veracode API credentials setup on your PC which runs the script, please follow these instructions: [Setting local API Credentials](https://docs.veracode.com/r/c_api_credentials3)
+## Run
 
-<a id="installation"></a>
-## Installation and Report Generation
+If you have saved credentials as above you can run:
 
-To run this script you first need to install the required packages that support the script with the following command.
+    python veracode-elearning-report.py -f eLearningReport.xlsx
 
-`pip install -r requirements.txt`
+Otherwise you will need to set environment variables:
 
-Once all packages installed, use this python command to execute the main script file in this repository
+    export VERACODE_API_KEY_ID=<YOUR_API_KEY_ID>
+    export VERACODE_API_KEY_SECRET=<YOUR_API_KEY_SECRET>
+    python veracode-elearning-report.py -f eLearningReport.xlsx
 
-`python ./veracode-elearning-report.py -f eLearningReport.xlsx`
 
-You'll see prompt of the different calls to the Veracode platform to query the information need to construct the report.
+If all went well, the above command will create a new file called `eLearningReport.xlsx` which you can open with Excel.
 
-If all went well, the above command will create a new file `eLearningReport.xlsx` which you can open with Excel.
-
-> ___Note___ - depending on your environment, you may need to use `pip3` instead of `pip` and `python3` instead of `python` if the above commands do not work for you
+> ___Note___ - depending on your environment, you may need to use `pip3` instead of `pip` and `python3` instead of `python`.
