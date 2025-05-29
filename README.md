@@ -1,5 +1,12 @@
 # Veracode eLearning Users Report
 
+## Requirements:
+- Python 3.12+ (https://www.python.org/downloads/)
+- API Credentials generated from a Veracode account with the eLearning permission and set as an eLearning Manager
+    - To obtain API credentials for your user account, you can follow this article: https://docs.veracode.com/r/c_api_credentials3
+
+## Installation
+
 This repository contains a script to construct a Veracode eLearning users completion status report in Excel format. 
 
 Clone this repository:
