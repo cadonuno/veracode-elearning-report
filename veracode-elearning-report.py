@@ -83,7 +83,7 @@ def get_report_cards_for_course(course, page=0, attempt=0):
 
     if response and response.ok:
         report_cards = response.json()["_embedded"]["reportcards"]
-        print(f"Successfully fetched report cards page {page} for course {course["courseId"]}. Found {len(report_cards)} report cards")
+        print(f"Successfully fetched report cards page {page} for course {course['courseId']}. Found {len(report_cards)} report cards")
         if has_more_pages(response.json()):
             return report_cards + get_report_cards_for_course(course, page+1, attempt)
         else:    
